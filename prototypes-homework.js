@@ -6,21 +6,21 @@ const Snake = function (name, length, weight, venomousSnake) {
 };
 
 Snake.prototype.getSnakeGeneralInfo = function () {
-    return `The ${
-        this.venomousSnake ? "Venomous" : "Nonvenomous"
-    } snake: \n\tName: ${this.name}\n\tLength: ${this.length} m\n\tWeight: ${
-        this.weight
-    } kg`;
+    const snakeType = this.venomousSnake ? "Venomous" : "Nonvenomous";
+
+    return `The ${snakeType} snake: \n\tName: ${this.name}\n\tLength: ${this.length} m\n\tWeight: ${this.weight} kg`;
 };
 
 Snake.prototype.howItComparesWithAverageSnake = function () {
     const averageSnakeLength = 1;
     const averageSnakeWeight = 2.2;
-    return `It's length is ${
-        this.length > averageSnakeLength ? "bigger" : "smaller "
-    } and it's weight is ${
-        this.weight > averageSnakeWeight ? "bigger" : "smaller "
-    } than the average `;
+
+    const lengthComparasion =
+        this.length > averageSnakeLength ? "bigger" : "smaller ";
+    const weightComparasion =
+        this.length > averageSnakeWeight ? "bigger" : "smaller ";
+
+    return `It's length is ${lengthComparasion} and it's weight is ${weightComparasion} than the average `;
 };
 
 const VenomousSnake = function (name, length, weight, poisonLevel) {
@@ -29,9 +29,12 @@ const VenomousSnake = function (name, length, weight, poisonLevel) {
 };
 
 VenomousSnake.prototype.howDangerousItIs = function () {
-    if (this.poisonLevel < 3) return "Danger level: Low";
-    else if (this.poisonLevel < 6) return "Danger level: Medium";
-    else return "Danger level: High";
+    let dangerLevel;
+    if (this.poisonLevel < 3) dangerLevel = "Low";
+    else if (this.poisonLevel < 6) dangerLevel = "Medium";
+    else dangerLevel = "High";
+
+    return `Danger level: ${dangerLevel}`;
 };
 
 const NonvenomousSnake = function (name, length, weight, color) {
@@ -41,9 +44,12 @@ const NonvenomousSnake = function (name, length, weight, color) {
 
 NonvenomousSnake.prototype.howCommonTheColorIs = function () {
     let commonColors = ["green", "brown", "yellow", "red", "black"];
-    return this.color in commonColors
-        ? "It has a common color"
-        : "It has an uncommon color";
+    const typeOfColor =
+        this.color in commonColors
+            ? "It has a common color"
+            : "It has an uncommon color";
+
+    return typeOfColor;
 };
 
 Object.setPrototypeOf(VenomousSnake.prototype, Snake.prototype);

@@ -7,21 +7,21 @@ class Snake {
     }
 
     getSnakeGeneralInfo() {
-        return `The ${
-            this.venomousSnake ? "Venomous" : "Nonvenomous"
-        } snake: \n\tName: ${this.name}\n\tLength: ${
-            this.length
-        } m\n\tWeight: ${this.weight} kg`;
+        const snakeType = this.venomousSnake ? "Venomous" : "Nonvenomous";
+
+        return `The ${snakeType} snake: \n\tName: ${this.name}\n\tLength: ${this.length} m\n\tWeight: ${this.weight} kg`;
     }
 
     howItComparesWithAverageSnake() {
-        let averageSnakeLength = 1;
-        let averageSnakeWeight = 2.2;
-        return `It's length is ${
-            this.length > averageSnakeLength ? "bigger" : "smaller "
-        } and it's weight is ${
-            this.weight > averageSnakeWeight ? "bigger" : "smaller "
-        } than the average `;
+        const averageSnakeLength = 1;
+        const averageSnakeWeight = 2.2;
+
+        const lengthComparasion =
+            this.length > averageSnakeLength ? "bigger" : "smaller ";
+        const weightComparasion =
+            this.length > averageSnakeWeight ? "bigger" : "smaller ";
+
+        return `It's length is ${lengthComparasion} and it's weight is ${weightComparasion} than the average `;
     }
 }
 
@@ -32,9 +32,12 @@ class VenomousSnake extends Snake {
     }
 
     howDangerousItIs() {
-        if (this.poisonLevel < 3) return "Danger level: Low";
-        else if (this.poisonLevel < 6) return "Danger level: Medium";
-        else return "Danger level: High";
+        let dangerLevel;
+        if (this.poisonLevel < 3) dangerLevel = "Low";
+        else if (this.poisonLevel < 6) dangerLevel = "Medium";
+        else dangerLevel = "High";
+
+        return `Danger level: ${dangerLevel}`;
     }
 }
 
@@ -45,9 +48,12 @@ class NonvenomousSnake extends Snake {
     }
     howCommonTheColorIs() {
         let commonColors = ["green", "brown", "yellow", "red", "black"];
-        return this.color in commonColors
-            ? "It has a common color"
-            : "It has an uncommon color";
+        const typeOfColor =
+            this.color in commonColors
+                ? "It has a common color"
+                : "It has an uncommon color";
+
+        return typeOfColor;
     }
 }
 snake1 = new Snake("Johnny", 5, 2.3, false);
